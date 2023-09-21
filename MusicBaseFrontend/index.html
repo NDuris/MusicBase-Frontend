@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="app.css" />
+    <title>MusicBase App</title>
+</head>
+
+<body>
+    <header>
+        <h1>MusicBase</h1>
+    </header>
+    <main>
+        <section id="artists-grid" class="grid-container"></section>
+        <form id="form-create">
+            <h2>Create a new Artist</h2>
+            <input type="text" name="name" placeholder="Artist name" required>
+            <input type="text" name="birthdate" placeholder="Birthdate" required>
+            <input type="text" name="activeSince" placeholder="Active since?" required>
+            <input type="text" name="genres" placeholder="Which genres fits?" required>
+            <input type="text" name="labels" placeholder="What label do they belong to?" required>
+            <input type="url" name="website" placeholder="Link to their website" required>
+            <input type="text" name="shortDescription" placeholder="Write a short short description." required>
+            <input type="url" name="image" placeholder="Link to an image of the artist" required>
+            <button>Create Artist</button>
+        </form>
+
+        <form id="form-update">
+            <h2>Update Arist</h2>
+            <input type="text" name="name" placeholder="Artist name" required>
+            <input type="text" name="birthdate" placeholder="Birthdate" required>
+            <input type="text" name="activeSince" placeholder="Active since?" required>
+            <input type="text" name="genres" placeholder="Which genres fits?" required>
+            <input type="text" name="labels" placeholder="What label do they belong to?" required>
+            <input type="url" name="website" placeholder="Link to their website" required>
+            <input type="text" name="shortDescription" placeholder="Write a short short description." required>
+            <input type="url" name="image" placeholder="Link to an image of the artist" required>
+            <button>Update Artist</button>
+        </form>        
+    </main>
+    <script src="app.js"></script>
+</body>
+
+</html>
