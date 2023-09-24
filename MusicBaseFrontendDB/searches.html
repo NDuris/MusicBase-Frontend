@@ -11,16 +11,16 @@
     <h1>Music Search</h1>
     <div class="search-container">
         <input type="text" id="searchInput" placeholder="Search for an artist, album, or song">
+        <select id="searchType">
+            <option value="artist">Artist</option>
+            <option value="track">Track</option>
+            <option value="album">Album</option>
+        </select>
         <button id="searchButton">Search</button>
     </div>
     <table id="resultsTable">
         <thead>
-            <tr>
-                <th>Name</th>
-                <th>Artist</th>
-                <th>Album</th>
-                <th>Genre</th>
-            </tr>
+            <!-- Table headers will be dynamically updated based on search type -->
         </thead>
         <tbody id="resultsBody">
             <!-- Table rows will be added here dynamically using JavaScript -->
