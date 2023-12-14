@@ -1,5 +1,5 @@
 // ============ GLOBAL VARIABELS ============ //
-const endpoint = "http://localhost:3333";
+let endpoint = "http://localhost:3334";
 
 document.addEventListener("DOMContentLoaded", () => {
     const searchInput = document.getElementById("searchInput");
@@ -14,39 +14,26 @@ document.addEventListener("DOMContentLoaded", () => {
         const selectedSearchType = searchType.value;
 
         // Define the endpoint based on the selected search type
-        let endpoint = "";
-        switch (selectedSearchType) {
-            case "artist":
-                endpoint = "/artists";
-                break;
-            case "track":
-                endpoint = "/tracks";
-                break;
-            case "album":
-                endpoint = "/albums";
-                break;
-            default:
-                break;
-        }
+        const specificEndpoint = `${endpoint}/search?term=${searchTerm}&type=${selectedSearchType}`;
 
         // Fetch data from the selected endpoint
-        fetch(`${endpoint}?search=${searchTerm}`)
+        fetch(specificEndpoint)
             .then((response) => response.json())
             .then((data) => {
+                console.log(data);
                 // Clear previous search results
                 resultsBody.innerHTML = "";
-
                 // Update table headers based on search type
                 let tableHeaders = "";
                 switch (selectedSearchType) {
                     case "artist":
-                        tableHeaders = "<th>Name</th><th>Label</th><th>Genres</th>";
+                        tableHeaders = "<th>Name</th>";
                         break;
                     case "track":
                         tableHeaders = "<th>Track Name</th><th>Artist</th><th>Album(s)</th>";
                         break;
                     case "album":
-                        tableHeaders = "<th>Album Name</th><th>Artist(s)</th><th>Tracks</th>";
+                        tableHeaders = "<th>Album Name</th><th>Artist(s)</th>";
                         break;
                     default:
                         break;
@@ -58,13 +45,13 @@ document.addEventListener("DOMContentLoaded", () => {
                     let rowHTML = "";
                     switch (selectedSearchType) {
                         case "artist":
-                            rowHTML = `<td>${result.name}</td><td>${result.labels}</td><td>${result.genres}</td>`;
+                            rowHTML = `<td>${result.ArtistName}</td>`;
                             break;
                         case "track":
-                            rowHTML = `<td>${result.track_name}</td><td>${result.artist}</td><td>${result.albums}</td>`;
+                            rowHTML = `<td>${result.TrackName}</td><td>${result.ArtistName}</td><td>${result.AlbumName}</td>`;
                             break;
                         case "album":
-                            rowHTML = `<td>${result.album_name}</td><td>${result.artists}</td><td>${result.tracks}</td>`;
+                            rowHTML = `<td>${result.AlbumName}</td><td>${result.ArtistName}</td>`;
                             break;
                         default:
                             break;
