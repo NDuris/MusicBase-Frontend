@@ -8,8 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const resultsTable = document.getElementById("resultsTable");
     const resultsBody = document.getElementById("resultsBody");
 
-    // Add event listener to the search button
-    searchButton.addEventListener("click", () => {
+    searchButton.addEventListener("click", async () => {
         const searchTerm = searchInput.value;
         const selectedSearchType = searchType.value;
 
@@ -57,13 +56,21 @@ document.addEventListener("DOMContentLoaded", () => {
                             break;
                     }
 
-                    const row = document.createElement("tr");
-                    row.innerHTML = rowHTML;
-                    resultsBody.appendChild(row);
-                });
-            })
-            .catch((error) => {
-                console.error("Error fetching data:", error);
-            });
+        const row = document.createElement("tr");
+        row.innerHTML = rowHTML;
+        resultsBody.appendChild(row);
     });
-});
+}
+
+function getTableHeaders(selectedSearchType) {
+    switch (selectedSearchType) {
+        case "artist":
+            return "<th>Name</th><th>Label</th><th>Genres</th>";
+        case "track":
+            return "<th>Track Name</th><th>Artist</th><th>Album(s)</th>";
+        case "album":
+            return "<th>Album Name</th><th>Artist(s)</th><th>Tracks</th>";
+        default:
+            return "";
+    }
+}
